@@ -2,7 +2,7 @@ from queue import Queue
 import wikipediaapi
 import time
 
-user_agent = "MsOrret'sWikipediaGame/1.0 (orret.deborah@pusd.us)"
+user_agent = "MsOrret'sWikipediaGame/1.0 (Ma6674Ja0722@pusd.us)"
 
 wiki_wiki = wikipediaapi.Wikipedia(user_agent, "en")
 
@@ -21,6 +21,46 @@ def wikipedia_game_solver(start_page, target_page):
     start_time = time.time()
   
     # FINISH THE CODE HERE
+    # find all the links from starting page
+    # check if I found the thing I was looking for
+    # find all the links from all the links from my starting page
+    # check if I found the thing I was looking for
+    # Find all the links from all the links from all the links from my starting page
+    # Check if I found the thing I was looking for
+
+    visited = []
+    Queue = ( )
+    parent = {}
+    path = []
+    
+
+
+    Queue.put(start_page, title)
+    visited.append(start_page,title)
+    
+
+    while not Queue.empty():
+
+        current_page_title = queue.get()
+        if current_page_title == target_page.title:
+            break
+
+        current_page = wiki_wiki.page(current_page_title)
+        current_links = fetch_links(current_page)
+        visited.append(current_page)
+
+        for thing in current_links:
+            if thing not in visited:
+                queue.put(thing)
+
+
+    child = target_page.title 
+
+    while child  != start_page.title:
+        path.append(child)
+        child = parent[child]
+    path.append(start_page.title)
+    path.reversal()
 
     end_time = time.time()
     print("This algorithm took", end_time-start_time, "seconds to run!")
